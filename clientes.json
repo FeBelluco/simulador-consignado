@@ -1,0 +1,17 @@
+[
+  {
+    "cpf": "11111111111",
+    "rendaLiquida": 2600,
+    "parcelasAtivas": [310, 445]
+  },
+  {
+    "cpf": "22222222222",
+    "rendaLiquida": 4150,
+    "parcelasAtivas": []
+  },
+  {
+    "cpf": "33333333333",
+    "rendaLiquida": 1518,
+    "parcelasAtivas": [265, 180, 110]
+  }
+]
