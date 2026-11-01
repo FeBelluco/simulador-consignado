@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+"scripts": {
+  "build": "tsc",
+  "test": "npm run build && node --test dist/margem.test.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
