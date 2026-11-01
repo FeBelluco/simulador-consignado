@@ -12,3 +12,43 @@ export function calcularParcelaPriceCentavos(
 
   return Math.round(parcelaNaoArredondadaCentavos);
 }
+
+export function calcularMaiorValorPriceCentavos(
+  margemDisponivelCentavos: number,
+  prazoMeses: number,
+): number {
+  if (margemDisponivelCentavos <= 0) {
+    return 0;
+  }
+
+  let limiteQueCabeCentavos = 0;
+  let limiteQueNaoCabeCentavos = 1;
+
+    // Encontra um limite superior cuja parcela já não caiba.
+  while (
+    calcularParcelaPriceCentavos(limiteQueNaoCabeCentavos, prazoMeses) <=
+    margemDisponivelCentavos
+  ) {
+    limiteQueNaoCabeCentavos *= 2;
+  }
+
+    // Busca o maior principal inteiro em centavos cuja parcela caiba.
+  while (limiteQueNaoCabeCentavos - limiteQueCabeCentavos > 1) {
+    const candidatoCentavos = Math.floor(
+      (limiteQueCabeCentavos + limiteQueNaoCabeCentavos) / 2,
+    );
+
+    const parcelaCentavos = calcularParcelaPriceCentavos(
+      candidatoCentavos,
+      prazoMeses,
+    );
+
+    if (parcelaCentavos <= margemDisponivelCentavos) {
+      limiteQueCabeCentavos = candidatoCentavos;
+    } else {
+      limiteQueNaoCabeCentavos = candidatoCentavos;
+    }
+  }
+
+  return limiteQueCabeCentavos;
+}
