@@ -38,7 +38,7 @@ export type ResultadoSimulacao =
       parcelaCentavos: number;
       margemDisponivelCentavos: number;
       cabe: false;
-      maiorValorQueCabeCentavos: number;
+      valorMaximoEmprestimoCentavos: number | null;
     };
 
 // Recebe o valor solicitado em centavos; a conversão a partir de reais
@@ -96,14 +96,19 @@ export function simular(entrada: EntradaSimulacao): ResultadoSimulacao {
     };
   }
 
+  const valorMaximoCalculadoCentavos = calcularMaiorValorPriceCentavos(
+    margemDisponivelCentavos,
+    prazoMeses,
+  );
+
   return {
     sucesso: true,
     parcelaCentavos,
     margemDisponivelCentavos,
     cabe: false,
-    maiorValorQueCabeCentavos: calcularMaiorValorPriceCentavos(
-      margemDisponivelCentavos,
-      prazoMeses,
-    ),
+    valorMaximoEmprestimoCentavos:
+      valorMaximoCalculadoCentavos >= VALOR_MINIMO_CENTAVOS
+        ? valorMaximoCalculadoCentavos
+        : null,
   };
 }
