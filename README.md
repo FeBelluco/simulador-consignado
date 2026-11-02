@@ -1,4 +1,4 @@
-# Simulador de crédito consignado
+# Simulador consignado
 
 API pequena para simular empréstimos consignados. A regra de margem e os cálculos da Tabela Price ficam separados da rota Express.
 

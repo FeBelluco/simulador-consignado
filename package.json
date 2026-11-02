@@ -1,5 +1,5 @@
 {
-  "name": "desafio-consignado-etapas",
+  "name": "simulador-consignado",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
