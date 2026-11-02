@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "npm run build && node --test dist/"
+    "test": "npm run build && node --test dist/cpf.test.js dist/margem.test.js dist/price.test.js"
   },
   "keywords": [],
   "author": "",
